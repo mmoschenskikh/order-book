@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#FFC0C0C0</color>
+    <color name="light_grey">#FFF7F7F7</color>
 
     <color name="details_selected_color">#FF2983EC</color>
     <color name="bottom_nav_unselected_color">@color/grey</color>
