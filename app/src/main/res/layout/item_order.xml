@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:weightSum="10">
+
+    <TextView
+        android:id="@+id/amount"
+        style="@style/ListItemTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:textAlignment="viewStart"
+        tools:text="0.035287" />
+
+    <TextView
+        android:id="@+id/price"
+        style="@style/ListItemTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:textAlignment="viewEnd"
+        tools:text="10351.53" />
+
+    <TextView
+        android:id="@+id/total"
+        style="@style/ListItemTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:textAlignment="viewEnd"
+        tools:text="143.65003" />
+
+</LinearLayout>

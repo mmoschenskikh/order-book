@@ -1,7 +1,6 @@
 package ru.maxultra.wstask.presentation.info
 
-import androidx.fragment.app.Fragment
+import ru.maxultra.wstask.databinding.FragmentInfoBinding
+import ru.maxultra.wstask.presentation.base.BaseFragment
 
-class InfoFragment : Fragment() {
-    // TODO
-}
+class InfoFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::inflate)
