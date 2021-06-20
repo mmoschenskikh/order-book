@@ -12,7 +12,7 @@ class OrderListAdapter : ListAdapter<Order, OrderViewHolder>(DIFF_CALLBACK) {
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Order>() {
             override fun areItemsTheSame(oldItem: Order, newItem: Order) =
-                oldItem.currencyPair == newItem.currencyPair && oldItem.quotePrice == newItem.quotePrice
+                oldItem.quotePrice == newItem.quotePrice
 
             override fun areContentsTheSame(oldItem: Order, newItem: Order) =
                 oldItem == newItem
