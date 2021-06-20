@@ -9,9 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#FFC0C0C0</color>
     <color name="light_grey">#FFF7F7F7</color>
+    <color name="bid_green">#FF3BC562</color>
+    <color name="ask_red">#FFF0433A</color>
 
     <color name="details_selected_color">#FF2983EC</color>
     <color name="bottom_nav_unselected_color">@color/grey</color>
-    <color name="ask_selected_color">#FFF0433A</color>
-    <color name="bid_selected_color">#FF3BC562</color>
+    <color name="ask_selected_color">@color/ask_red</color>
+    <color name="bid_selected_color">@color/bid_green</color>
 </resources>

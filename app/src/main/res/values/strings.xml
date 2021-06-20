@@ -6,4 +6,7 @@
     <string name="amount_header">Amount %1$s</string>
     <string name="price_header">Price %1$s</string>
     <string name="total_header">Total</string>
+    <string name="bid_price_header">Bid price</string>
+    <string name="diff_header">DIFF</string>
+    <string name="ask_price_header">Ask price</string>
 </resources>
