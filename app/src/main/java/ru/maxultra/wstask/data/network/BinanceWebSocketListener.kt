@@ -17,39 +17,13 @@ class BinanceWebSocketListener @Inject constructor(
 
     lateinit var handleMessage: (DepthStreamEvent) -> Unit
     lateinit var handleFailure: (String, Throwable) -> Unit
-
-    var symbol: String? = null
-        set(value) {
-            if (this::webSocket.isInitialized) {
-                when {
-                    value == null && field != null -> {
-                        unsubscribe(field!!)
-                    }
-                    value != null && field != null && value != field -> {
-                        unsubscribe(field!!)
-                        subscribe(value)
-                    }
-                    value != null && field == null -> {
-                        subscribe(value)
-                    }
-                }
-            }
-            field = value
-        }
+    lateinit var symbol: String
 
     private lateinit var webSocket: WebSocket
 
-    private fun unsubscribe(symbol: String) {
-        val unsubscribeRequest = SocketRequest(
-            method = METHOD_UNSUBSCRIBE,
-            params = listOf("$symbol$PARAM_DEPTH"),
-            id = 1
-        )
-        val jsonUnsubscribeRequest = socketRequestAdapter.toJson(unsubscribeRequest)
-        webSocket.send(jsonUnsubscribeRequest)
-    }
-
     private fun subscribe(symbol: String) {
+        if (symbol.isBlank()) return
+        Log.d(this::class.java.simpleName, "Subscribing at $symbol")
         val request = SocketRequest(
             method = METHOD_SUBSCRIBE,
             params = listOf("$symbol$PARAM_DEPTH"),
@@ -60,12 +34,16 @@ class BinanceWebSocketListener @Inject constructor(
     }
 
     override fun onOpen(webSocket: WebSocket, response: Response) {
+        Log.d(this::class.java.simpleName, "onOpen")
         super.onOpen(webSocket, response)
         this.webSocket = webSocket
-        if (symbol != null) subscribe(symbol!!)
+        Log.d(this::class.java.simpleName, "this.webSocket : ${this.webSocket}")
+//        Log.d(this::class.java.simpleName, "Symbol is : ${symbol}")
+        if (::symbol.isInitialized) subscribe(symbol)
     }
 
     override fun onMessage(webSocket: WebSocket, text: String) {
+        Log.d(this::class.java.simpleName, "Message received: $text")
         try {
             val event = depthStreamEventAdapter.fromJson(text) ?: return
             handleMessage(event)
@@ -75,7 +53,12 @@ class BinanceWebSocketListener @Inject constructor(
         }
     }
 
+    override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
+        Log.d(this::class.java.simpleName, "Closed: $reason")
+    }
+
     override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
+        Log.e(this::class.java.simpleName, "Failure (symbol is $symbol)", t)
         handleFailure("WebSocket failure", t)
     }
 }
