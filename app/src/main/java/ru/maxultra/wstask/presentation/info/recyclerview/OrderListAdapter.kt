@@ -25,5 +25,5 @@ class OrderListAdapter : ListAdapter<Order, OrderViewHolder>(DIFF_CALLBACK) {
         )
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) =
-        holder.bind(getItem(position), position)
+        holder.bind(getItem(position))
 }
