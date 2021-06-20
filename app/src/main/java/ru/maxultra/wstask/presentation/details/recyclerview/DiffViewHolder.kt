@@ -8,10 +8,15 @@ class DiffViewHolder(
     private val binding: ItemDiffBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(bidDiff: Difference, askDiff: Difference) {
-        binding.bidPrice.text = String.format("%.2f", bidDiff.price)
-        binding.bidDiff.text = String.format("%.6f", bidDiff.diff)
-        binding.askPrice.text = String.format("%.2f", askDiff.price)
-        binding.askDiff.text = String.format("%.6f", askDiff.diff)
+    fun bind(bidDiff: Difference?, askDiff: Difference?) {
+        if (bidDiff != null) {
+            binding.bidPrice.text = String.format("%.2f", bidDiff.price)
+            binding.bidDiff.text = String.format("%.6f", bidDiff.diff)
+        }
+        if (askDiff != null) {
+            binding.askPrice.text = String.format("%.2f", askDiff.price)
+            binding.askDiff.text = String.format("%.6f", askDiff.diff)
+        }
+
     }
 }
