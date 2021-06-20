@@ -9,4 +9,5 @@
     <string name="bid_price_header">Bid price</string>
     <string name="diff_header">DIFF</string>
     <string name="ask_price_header">Ask price</string>
+    <string name="quote_spinner_item">/%1$s</string>
 </resources>
