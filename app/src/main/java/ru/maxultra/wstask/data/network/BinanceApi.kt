@@ -14,7 +14,7 @@ class BinanceApi @Inject constructor(
     private val depthSnapshotAdapter: JsonAdapter<DepthSnapshot>
 ) {
     suspend fun getDepthSnapshot(symbol: String, limit: Int = 100): DepthSnapshot? {
-        val url = getDepthRequestHttp(symbol, limit)
+        val url = getDepthRequestHttp(symbol.uppercase(), limit)
         val request = Request.Builder().url(url).build()
         return withContext(Dispatchers.IO) {
             val response = client.newCall(request).execute()
