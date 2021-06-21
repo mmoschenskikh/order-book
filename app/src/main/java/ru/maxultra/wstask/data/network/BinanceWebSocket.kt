@@ -23,6 +23,7 @@ class BinanceWebSocket(
     init {
         binanceWebSocketListener.symbol = initialSymbol.lowercase()
         binanceWebSocketListener.handleMessage = { event -> handleMessage(event) }
+        binanceWebSocketListener.handleFailure = { _, t -> throw t }
     }
 
     private val webSocket = client.newWebSocket(connectionRequest, binanceWebSocketListener)

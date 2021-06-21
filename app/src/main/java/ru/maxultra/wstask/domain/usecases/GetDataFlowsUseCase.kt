@@ -5,9 +5,8 @@ import kotlinx.coroutines.flow.onEach
 import ru.maxultra.wstask.domain.Repository
 import ru.maxultra.wstask.domain.entities.Difference
 import ru.maxultra.wstask.domain.entities.Order
-import javax.inject.Inject
 
-class GetDataFlowsUseCase @Inject constructor(repository: Repository) {
+class GetDataFlowsUseCase(repository: Repository) {
     val currentSymbol = repository.currentSymbol
     val dataIsReady = repository.dataIsReady.onEach {
         if (it) {

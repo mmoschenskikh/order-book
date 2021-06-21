@@ -12,6 +12,7 @@ import ru.maxultra.wstask.domain.entities.currency.Currency
 import ru.maxultra.wstask.domain.entities.currency.EnumCurrency
 import ru.maxultra.wstask.domain.entities.currencypair.CurrencyPair
 import ru.maxultra.wstask.domain.entities.currencypair.SimpleCurrencyPair
+import ru.maxultra.wstask.domain.usecases.GetDataFlowsUseCase
 import javax.inject.Singleton
 
 @Module
@@ -35,5 +36,11 @@ class DomainModule {
         binanceWebSocketFactory: BinanceWebSocketFactory
     ): Repository {
         return BinanceRepository(binanceApi, binanceWebSocketFactory)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUseCase(repository: Repository): GetDataFlowsUseCase {
+        return GetDataFlowsUseCase(repository)
     }
 }
