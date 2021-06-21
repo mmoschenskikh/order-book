@@ -11,7 +11,7 @@ interface Repository {
 
     val currentSymbol: Flow<CurrencyPair?>
 
-    fun getAvailablePairs(): List<CurrencyPair>
+    fun getAvailablePairs(): Flow<List<CurrencyPair>>
 
     // Call setCurrencyPair before getting streams
     suspend fun setCurrencyPair(currencyPair: CurrencyPair)

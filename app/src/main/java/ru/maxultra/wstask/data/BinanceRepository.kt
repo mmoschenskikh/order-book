@@ -1,7 +1,9 @@
 package ru.maxultra.wstask.data
 
 
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flowOf
 import ru.maxultra.wstask.data.network.BinanceApi
 import ru.maxultra.wstask.data.network.BinanceWebSocket
 import ru.maxultra.wstask.data.network.BinanceWebSocketFactory
@@ -21,11 +23,13 @@ class BinanceRepository @Inject constructor(
     override val currentSymbol = MutableStateFlow<CurrencyPair?>(null)
     private lateinit var binanceWebSocket: BinanceWebSocket
 
-    override fun getAvailablePairs(): List<CurrencyPair> {
-        return listOf( // FIXME: Replace implementations with abstractions
-            SimpleCurrencyPair(EnumCurrency.BTC, EnumCurrency.USDT),
-            SimpleCurrencyPair(EnumCurrency.BNB, EnumCurrency.BTC),
-            SimpleCurrencyPair(EnumCurrency.ETH, EnumCurrency.BTC)
+    override fun getAvailablePairs(): Flow<List<SimpleCurrencyPair>> {
+        return flowOf(
+            listOf( // FIXME: Replace implementations with abstractions
+                SimpleCurrencyPair(EnumCurrency.BTC, EnumCurrency.USDT),
+                SimpleCurrencyPair(EnumCurrency.BNB, EnumCurrency.BTC),
+                SimpleCurrencyPair(EnumCurrency.ETH, EnumCurrency.BTC)
+            )
         )
     }
 
