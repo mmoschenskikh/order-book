@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import ru.maxultra.wstask.databinding.ItemOrderBinding
 import ru.maxultra.wstask.domain.entities.Order
+import ru.maxultra.wstask.presentation.info.InfoType
 
-class OrderListAdapter : ListAdapter<Order, OrderViewHolder>(DIFF_CALLBACK) {
+class OrderListAdapter(val type: InfoType) : ListAdapter<Order, OrderViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Order>() {
@@ -21,7 +22,8 @@ class OrderListAdapter : ListAdapter<Order, OrderViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         OrderViewHolder(
-            ItemOrderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemOrderBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            type
         )
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) =

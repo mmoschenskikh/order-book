@@ -1,26 +1,26 @@
 package ru.maxultra.wstask.presentation.info.recyclerview
 
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import ru.maxultra.wstask.R
 import ru.maxultra.wstask.databinding.ItemOrderBinding
 import ru.maxultra.wstask.domain.entities.Order
-import kotlin.math.ceil
-import kotlin.math.log10
+import ru.maxultra.wstask.presentation.formatDouble
+import ru.maxultra.wstask.presentation.info.InfoType
 
 class OrderViewHolder(
-    private val binding: ItemOrderBinding
+    private val binding: ItemOrderBinding,
+    type: InfoType
 ) : RecyclerView.ViewHolder(binding.root) {
+
+    @ColorRes
+    private val priceColor = if (type == InfoType.BIDS) R.color.bid_green else R.color.ask_red
 
     fun bind(order: Order) {
         binding.amount.text = formatDouble(order.baseAmount)
         binding.price.text = formatDouble(order.quotePrice)
+        binding.price.setTextColor(ContextCompat.getColor(binding.root.context, priceColor))
         binding.total.text = formatDouble(order.total)
-    }
-
-    private fun formatDouble(double: Double): String {
-        if (double < 1)
-            return String.format("%.6f", double)
-        var digits = 7 - ceil(log10(double)).toInt()
-        if (digits < 0) digits = 0
-        return String.format("%.${digits}f", double)
     }
 }
