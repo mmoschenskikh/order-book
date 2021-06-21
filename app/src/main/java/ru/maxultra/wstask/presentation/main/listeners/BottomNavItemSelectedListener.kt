@@ -4,7 +4,7 @@ import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.maxultra.wstask.R
 import ru.maxultra.wstask.presentation.main.MainViewModel
-import ru.maxultra.wstask.presentation.main.PageType
+import ru.maxultra.wstask.presentation.main.viewpager.PageType
 
 class BottomNavItemSelectedListener(
     private val viewModel: MainViewModel

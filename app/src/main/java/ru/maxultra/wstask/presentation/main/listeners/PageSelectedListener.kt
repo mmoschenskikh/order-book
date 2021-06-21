@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.maxultra.wstask.R
-import ru.maxultra.wstask.presentation.main.PageType
+import ru.maxultra.wstask.presentation.main.viewpager.PageType
 
 class PageSelectedListener(
     private val navigationView: BottomNavigationView,

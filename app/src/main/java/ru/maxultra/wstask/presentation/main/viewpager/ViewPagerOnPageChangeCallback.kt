@@ -2,7 +2,6 @@ package ru.maxultra.wstask.presentation.main.viewpager
 
 import androidx.viewpager2.widget.ViewPager2
 import ru.maxultra.wstask.presentation.main.MainViewModel
-import ru.maxultra.wstask.presentation.main.PageType
 
 class ViewPagerOnPageChangeCallback(
     private val viewModel: MainViewModel
