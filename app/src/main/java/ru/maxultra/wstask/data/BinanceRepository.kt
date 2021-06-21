@@ -18,6 +18,7 @@ class BinanceRepository @Inject constructor(
 ) : Repository {
 
     override val dataIsReady = MutableStateFlow(false)
+    override val currentSymbol = MutableStateFlow<CurrencyPair?>(null)
     private lateinit var binanceWebSocket: BinanceWebSocket
 
     override fun getAvailablePairs(): List<CurrencyPair> {
@@ -30,6 +31,7 @@ class BinanceRepository @Inject constructor(
 
     override suspend fun setCurrencyPair(currencyPair: CurrencyPair) {
         dataIsReady.value = false
+        currentSymbol.value = currencyPair
         val symbol = CurrencyPairToStringUseCase.execute(currencyPair)
         val snapshot = binanceApi.getDepthSnapshot(symbol)
             ?: throw IllegalStateException("Cannot get data from the API")

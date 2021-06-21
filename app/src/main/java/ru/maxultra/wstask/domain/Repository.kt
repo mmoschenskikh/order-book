@@ -9,6 +9,8 @@ interface Repository {
 
     val dataIsReady: Flow<Boolean>
 
+    val currentSymbol: Flow<CurrencyPair?>
+
     fun getAvailablePairs(): List<CurrencyPair>
 
     // Call setCurrencyPair before getting streams
