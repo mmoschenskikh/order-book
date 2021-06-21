@@ -3,6 +3,7 @@ package ru.maxultra.wstask.presentation.details.recyclerview
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxultra.wstask.databinding.ItemDiffBinding
 import ru.maxultra.wstask.domain.entities.Difference
+import ru.maxultra.wstask.presentation.formatDouble
 
 class DiffViewHolder(
     private val binding: ItemDiffBinding
@@ -10,13 +11,12 @@ class DiffViewHolder(
 
     fun bind(bidDiff: Difference?, askDiff: Difference?) {
         if (bidDiff != null) {
-            binding.bidPrice.text = String.format("%.2f", bidDiff.price)
-            binding.bidDiff.text = String.format("%.6f", bidDiff.diff)
+            binding.bidPrice.text = formatDouble(bidDiff.price)
+            binding.bidDiff.text = formatDouble(bidDiff.diff)
         }
         if (askDiff != null) {
-            binding.askPrice.text = String.format("%.2f", askDiff.price)
-            binding.askDiff.text = String.format("%.6f", askDiff.diff)
+            binding.askPrice.text = formatDouble(askDiff.price)
+            binding.askDiff.text = formatDouble(askDiff.diff)
         }
-
     }
 }

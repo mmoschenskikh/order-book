@@ -12,7 +12,6 @@ import ru.maxultra.wstask.data.entities.DepthSnapshot
 import ru.maxultra.wstask.domain.entities.Difference
 import ru.maxultra.wstask.domain.entities.Order
 import ru.maxultra.wstask.domain.usecases.ManageOrderBookUseCase
-import ru.maxultra.wstask.round
 
 private typealias FlowTriple = Flow<Triple<List<Order>, List<Order>, Pair<List<Difference>, List<Difference>>>>
 
@@ -77,7 +76,7 @@ class BinanceWebSocket constructor(
     val diff = triple.map { it.third }
 
     private fun ordersListToOrders(ordersList: List<List<String>>): List<Order> {
-        return ordersList.map { Order(it[1].toDouble(), it[0].toDouble().round(2)) }
+        return ordersList.map { Order(it[1].toDouble(), it[0].toDouble()) }
     }
 
     companion object {

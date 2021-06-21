@@ -1,4 +1,4 @@
-package ru.maxultra.wstask.presentation
+package ru.maxultra.wstask
 
 fun Double.round(decimals: Int): Double {
     var multiplier = 1.0
