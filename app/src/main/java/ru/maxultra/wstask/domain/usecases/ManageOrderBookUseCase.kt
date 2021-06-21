@@ -20,12 +20,11 @@ class ManageOrderBookUseCase(initialState: List<Order>, private val orderBookMax
                 bookList[elementIndex] = order
             } else {
                 if (bookList.size < orderBookMaxSize) {
-                    bookList.add(order)
+                    bookList.add(0, order)
                 }
             }
         }
         bookList.removeAll { it.baseAmount == 0.0 }
-        bookList.sortBy { it.quotePrice }
 
         orderBook = bookList
         diff = diffList
