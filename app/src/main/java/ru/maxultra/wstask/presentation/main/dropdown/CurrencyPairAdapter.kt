@@ -1,4 +1,4 @@
-package ru.maxultra.wstask.presentation.main
+package ru.maxultra.wstask.presentation.main.dropdown
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -16,8 +16,8 @@ class CurrencyPairAdapter(context: Context, list: List<CurrencyPair>) :
     private val layoutInflater = LayoutInflater.from(context)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view =
-            convertView ?: layoutInflater.inflate(R.layout.item_pair_dropdown, parent, false)
+        val view = convertView
+            ?: layoutInflater.inflate(R.layout.item_pair_dropdown, parent, false)
 
         val pair = getItem(position)
         setItemForPair(view, pair)
