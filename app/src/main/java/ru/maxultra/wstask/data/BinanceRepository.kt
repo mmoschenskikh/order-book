@@ -1,7 +1,6 @@
 package ru.maxultra.wstask.data
 
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import ru.maxultra.wstask.data.network.BinanceApi
 import ru.maxultra.wstask.data.network.BinanceWebSocket
@@ -13,7 +12,6 @@ import ru.maxultra.wstask.domain.entities.currencypair.SimpleCurrencyPair
 import ru.maxultra.wstask.domain.usecases.CurrencyPairToStringUseCase
 import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 class BinanceRepository @Inject constructor(
     private val binanceApi: BinanceApi,
     private val binanceWebSocketFactory: BinanceWebSocketFactory,

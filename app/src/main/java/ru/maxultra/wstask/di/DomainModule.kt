@@ -4,7 +4,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import ru.maxultra.wstask.data.BinanceRepository
 import ru.maxultra.wstask.data.network.BinanceApi
 import ru.maxultra.wstask.data.network.BinanceWebSocketFactory
@@ -29,7 +28,6 @@ class DomainModule {
         return SimpleCurrencyPair(baseCurrency, quoteCurrency)
     }
 
-    @ExperimentalCoroutinesApi
     @Provides
     @Singleton
     fun provideRepository(

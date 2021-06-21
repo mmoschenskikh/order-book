@@ -1,6 +1,7 @@
 package ru.maxultra.wstask.data.network
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.GlobalScope
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import ru.maxultra.wstask.data.entities.DepthSnapshot
@@ -12,8 +13,14 @@ class BinanceWebSocketFactory @Inject constructor(
     private val connectionRequest: Request
 ) {
 
-    @ExperimentalCoroutinesApi
-    fun create(symbol: String, snapshot: DepthSnapshot) =
-        BinanceWebSocket(symbol, snapshot, client, binanceWebSocketListener, connectionRequest)
+    fun create(symbol: String, snapshot: DepthSnapshot, scope: CoroutineScope = GlobalScope) =
+        BinanceWebSocket(
+            symbol,
+            snapshot,
+            client,
+            connectionRequest,
+            binanceWebSocketListener,
+            scope
+        )
 }
 
